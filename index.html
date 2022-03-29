@@ -10,7 +10,9 @@
     
     <script>
         //Create function that randomly returns Rock, Paper, or Scissors as the computer's play
-        
+        let playerScore = 0;
+        let computerScore = 0;
+
         function computerPlay() {
             let selection = Math.floor(Math.random() * 3) + 1;
             let compChoice = "";
@@ -38,10 +40,14 @@
                     return result = "Draw! Scissors and Scissors";
                 }
                 else if (computerSelection == "rock") {
+                    computerScore += 1;
                     return result = "Computer wins! Rock beats Scissors";
+                    
                 }
                 else if (computerSelection == "paper") {
+                    playerScore += 1;
                     return result = "Player wins! Scissors beats Paper";
+                    
                 }
                 else {
                     return result = "There was an error";
@@ -49,13 +55,17 @@
             }
             else if (playerSelection == "rock") {
                 if (computerSelection == "scissors") {
+                    playerScore += 1;
                     return result = "Player wins! Rock beats Scissors";
+                    
                 }
                 else if (computerSelection == "rock") {
                     return result = "Draw! Rock and Rock";
                 }
                 else if (computerSelection == "paper") {
+                    computerScore += 1;
                     return result = "Computer wins! Paper beats Rock";
+                    
                 }
                 else {
                     return result = "There was an error";
@@ -63,10 +73,14 @@
             }
             else if (playerSelection == "paper") {
                 if (computerSelection == "scissors") {
+                    computerScore += 1;
                     return result = "Computer wins! Scissors beats Paper";
+                    
                 }
                 else if (computerSelection == "rock") {
+                    playerScore += 1;
                     return result = "Player wins! Paper beats Rock";
+                    
                 }
                 else if (computerSelection == "paper") {
                     return result = "Draw! Paper and Paper";
@@ -75,14 +89,35 @@
                     return result = "There was an error";
                 }
             }
+            else {
+                return result = "Error";
+            }
         };
 
-        const playerSelection = "rock";
-        const computerSelection = computerPlay();
-        console.log(playRound(playerSelection, computerSelection));
+        //Create game function that calls playRound function inside of it to play a 5 round game, log the outcome of each game, and display overall winner
 
-        //Create game function that calls playRound function inside of it to play a 5 round game
-        //Get user selection via prompt()
+        let game = () => {
+            for (let i = 0; i < 5; i++) {
+                let playerSelection = window.prompt("Type Rock, Paper, or Scissors");
+                playerSelection = playerSelection.toLowerCase();
+                let computerSelection = computerPlay();
+                console.log(playRound(playerSelection, computerSelection));
+            }
+        }
+
+       game();
+        if (playerScore > computerScore) {
+              console.log("The player wins")
+            }
+            else if (computerScore > playerScore) {
+                console.log("The computer wins");
+            }
+            else if (computerScore == playerScore) {
+                console.log("The game ended in a draw");
+            }
+        console.log(`The computer's score is ${computerScore}`);
+        console.log(`The player's score is ${playerScore}`);
+            
     </script>
 </body>
 </html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //Create function that randomly returns Rock, Paper, or Scissors as the computer's play
+        
+        function computerPlay() {
+            let selection = Math.floor(Math.random() * 3) + 1;
+            let compChoice = "";
+            if(selection == 1){
+                return compChoice = "scissors";
+            }
+            else if(selection == 2) {
+                return compChoice = "rock";
+            }
+            else if(selection == 3) {
+                return compChoice = "paper"
+            }
+            else {
+                return compChoice = "Error";
+            }
+            }
+
+
+        //Create function that takes two parameters and returns the winner of the round
+        //Needs to be case sensitive
+
+        let singleRound = (playerSelection, computerSelection) => {
+            if (playerSelection == "scissors") {
+                if (computerSelection == "scissors") {
+                    console.log("Draw! Scissors and Scissors");
+                }
+                else if (computerSelection == "rock") {
+                    console.log("Computer wins! Rock beats Scissors");
+                }
+                else if (computerSelection == "paper") {
+                    console.log("Player wins! Scissors beats Paper");
+                }
+                else {
+                    console.log("There was an error");
+                }
+            }
+            else if (playerSelection == "rock") {
+                if (computerSelection == "scissors") {
+                    console.log("Player wins! Rock beats Scissors");
+                }
+                else if (computerSelection == "rock") {
+                    console.log("Draw! Rock and Rock");
+                }
+                else if (computerSelection == "paper") {
+                    console.log("Computer wins! Paper beats Rock");
+                }
+                else {
+                    console.log("There was an error");
+                }
+            }
+            else if (playerSelection == "paper") {
+                if (computerSelection == "scissors") {
+                    console.log("Computer wins! Scissors beats Paper");
+                }
+                else if (computerSelection == "rock") {
+                    console.log("Player wins! Paper beats Rock");
+                }
+                else if (computerSelection == "paper") {
+                    console.log("Draw! Paper and Paper");
+                }
+                else {
+                    console.log("There was an error");
+                }
+            }
+        };
+
+        singleRound("rock", computerPlay());
+        //Create game function that calls playRound function inside of it to play a 5 round game
+        //Get user selection via prompt()
+    </script>
+</body>
+</html>

@@ -10,8 +10,6 @@
     
     <script>
         //Create function that randomly returns Rock, Paper, or Scissors as the computer's play
-        let playerScore = 0;
-        let computerScore = 0;
 
         function computerPlay() {
             let selection = Math.floor(Math.random() * 3) + 1;
@@ -34,6 +32,9 @@
         //Create function that takes two parameters and returns the winner of the round
         //Needs to be case sensitive
 
+        let playerScore = 0;
+        let computerScore = 0;
+        
         let playRound = (playerSelection, computerSelection) => {
             if (playerSelection == computerSelection && computerSelection) {
                     return result = `Player played ${playerSelection} and Computer played ${computerSelection}. Draw! Player and Computer had the same selection`;

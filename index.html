@@ -9,7 +9,7 @@
 <body>
     
     <script>
-        //Create function that randomly returns Rock, Paper, or Scissors as the computer's play
+        //the function computerPlay() generates a random number between 1 and 3, and returns it as the input from the computer
 
         function computerPlay() {
             let selection = Math.floor(Math.random() * 3) + 1;
@@ -28,12 +28,12 @@
             }
             }
 
-
-        //Create function that takes two parameters and returns the winner of the round
-        //Needs to be case sensitive
-
+        
+        // initialize the individual score variables
         let playerScore = 0;
         let computerScore = 0;
+
+        //This function evaluates the strings inside of playerSelection and computerSelection, and compares them to find the winner, while also adding points to the winner's score.
 
         let playRound = (playerSelection, computerSelection) => {
             if (playerSelection == computerSelection && computerSelection) {
@@ -52,7 +52,7 @@
             }
         };
 
-        //Create game function that calls playRound function inside of it to play a 5 round game, log the outcome of each game, and display overall winner
+        //This game function creates a loop that allows for 5 rounds to be played. It accepts the user input and computer input, then inserts them into the playRound() function and displays it.
 
         let game = () => {
             for (let i = 0; i < 5; i++) {
@@ -65,6 +65,7 @@
 
         game();
         
+        //Log the individual scores to the console, and determines who the final winner is.
         console.log(`The computer's score is ${computerScore}`);
         console.log(`The player's score is ${playerScore}`);
         if (playerScore > computerScore) {

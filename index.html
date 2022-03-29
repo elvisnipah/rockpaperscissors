@@ -23,10 +23,10 @@
                 return compChoice = "rock";
             }
             else if(selection == 3) {
-                return compChoice = "paper"
+                return compChoice = "paper";
             }
             else {
-                return compChoice = "Error";
+                return undefined;
             }
             }
 
@@ -35,60 +35,17 @@
         //Needs to be case sensitive
 
         let playRound = (playerSelection, computerSelection) => {
-            if (playerSelection == "scissors") {
-                if (computerSelection == "scissors") {
-                    return result = "Draw! Scissors and Scissors";
+            if (playerSelection == computerSelection && computerSelection) {
+                    return result = `Player played ${playerSelection} and Computer played ${computerSelection}. Draw! Player and Computer had the same selection`;
                 }
-                else if (computerSelection == "rock") {
-                    computerScore += 1;
-                    return result = "Computer wins! Rock beats Scissors";
-                    
-                }
-                else if (computerSelection == "paper") {
+            else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock")) {
                     playerScore += 1;
-                    return result = "Player wins! Scissors beats Paper";
-                    
+                    return result = `Player played ${playerSelection} and Computer played ${computerSelection}. Player wins!`;
                 }
-                else {
-                    return result = "There was an error";
-                }
-            }
-            else if (playerSelection == "rock") {
-                if (computerSelection == "scissors") {
-                    playerScore += 1;
-                    return result = "Player wins! Rock beats Scissors";
-                    
-                }
-                else if (computerSelection == "rock") {
-                    return result = "Draw! Rock and Rock";
-                }
-                else if (computerSelection == "paper") {
+            else if ((computerSelection == "paper" && playerSelection == "rock") || (computerSelection == "scissors" && playerSelection == "paper") || (computerSelection == "rock" && playerSelection == "scissors")) {
                     computerScore += 1;
-                    return result = "Computer wins! Paper beats Rock";
-                    
+                    return result = `Player played ${playerSelection} and Computer played ${computerSelection}. Computer wins!`;
                 }
-                else {
-                    return result = "There was an error";
-                }
-            }
-            else if (playerSelection == "paper") {
-                if (computerSelection == "scissors") {
-                    computerScore += 1;
-                    return result = "Computer wins! Scissors beats Paper";
-                    
-                }
-                else if (computerSelection == "rock") {
-                    playerScore += 1;
-                    return result = "Player wins! Paper beats Rock";
-                    
-                }
-                else if (computerSelection == "paper") {
-                    return result = "Draw! Paper and Paper";
-                }
-                else {
-                    return result = "There was an error";
-                }
-            }
             else {
                 return result = "Error";
             }

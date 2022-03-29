@@ -10,7 +10,6 @@
     
     <script>
         //the function computerPlay() generates a random number between 1 and 3, and returns it as the input from the computer
-
         function computerPlay() {
             let selection = Math.floor(Math.random() * 3) + 1;
             let compChoice = "";
@@ -34,7 +33,6 @@
         let computerScore = 0;
 
         //This function evaluates the strings inside of playerSelection and computerSelection, and compares them to find the winner, while also adding points to the winner's score.
-
         let playRound = (playerSelection, computerSelection) => {
             if (playerSelection == computerSelection && computerSelection) {
                     return result = `Player played ${playerSelection} and Computer played ${computerSelection}. Draw! Player and Computer had the same selection`;
@@ -53,7 +51,6 @@
         };
 
         //This game function creates a loop that allows for 5 rounds to be played. It accepts the user input and computer input, then inserts them into the playRound() function and displays it.
-
         let game = () => {
             for (let i = 0; i < 5; i++) {
                 let playerSelection = window.prompt("Type Rock, Paper, or Scissors");

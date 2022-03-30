@@ -15,17 +15,17 @@
             let compChoice = "";
             if(selection == 1){
                 return compChoice = "scissors";
-            }
+                }
             else if(selection == 2) {
                 return compChoice = "rock";
-            }
+                }
             else if(selection == 3) {
                 return compChoice = "paper";
-            }
+                }
             else {
                 return undefined;
-            }
-            }
+                }
+        }
 
         
         // initialize the individual score variables
@@ -53,28 +53,30 @@
         //This game function creates a loop that allows for 5 rounds to be played. It accepts the user input and computer input, then inserts them into the playRound() function and displays it.
         let game = () => {
             for (let i = 0; i < 5; i++) {
-                let playerSelection = window.prompt("Type Rock, Paper, or Scissors");
-                playerSelection = playerSelection.toLowerCase();
+                let playerSelection = window.prompt("Type Rock, Paper, or Scissors").toLowerCase();
                 let computerSelection = computerPlay();
                 console.log(playRound(playerSelection, computerSelection));
             }
         }
 
-        game();
-        
-        //Log the individual scores to the console, and determines who the final winner is.
-        console.log(`The computer's score is ${computerScore}`);
-        console.log(`The player's score is ${playerScore}`);
-        if (playerScore > computerScore) {
-              console.log("The player wins")
-            }
-        else if (computerScore > playerScore) {
+        let playGame = () => {
+            game();
+
+            //Log the individual scores to the console, and determines who the final winner is.
+            console.log(`The computer's score is ${computerScore}`);
+            console.log(`The player's score is ${playerScore}`);
+            if (playerScore > computerScore) {
+                console.log("The player wins")
+                }
+            else if (computerScore > playerScore) {
                 console.log("The computer wins");
-            }
-        else if (computerScore == playerScore) {
+                }
+            else if (computerScore == playerScore) {
                 console.log("The game ended in a draw");
-            }
-            
+                }
+        }
+        
+        playGame();
     </script>
 </body>
 </html>

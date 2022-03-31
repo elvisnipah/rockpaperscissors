@@ -7,10 +7,19 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="container">
+        <button id="paperBtn">Paper</button>
+        <button id="rockBtn">Rock</button>
+        <button id="scissorsBtn">Scissors</button>
+    </div>
     
     <script>
-        //the function computerPlay() generates a random number between 1 and 3, and returns it as the input from the computer
-        function computerPlay() {
+    const container = document.querySelector('#container');
+    const resultDiv = document.createElement("div");
+
+    let playerScore = 0;
+    let computerScore = 0;
+    function computerPlay() {
             let selection = Math.floor(Math.random() * 3) + 1;
             let compChoice = "";
             if(selection == 1){
@@ -26,57 +35,45 @@
                 return undefined;
                 }
         }
-
-        
-        // initialize the individual score variables
-        let playerScore = 0;
-        let computerScore = 0;
-
-        //This function evaluates the strings inside of playerSelection and computerSelection, and compares them to find the winner, while also adding points to the winner's score.
-        let playRound = (playerSelection, computerSelection) => {
+    
+    let playRound = (playerSelection, computerSelection) => {
+      if (playerScore == 5) {
+      resultDiv.textContent = `GAME OVER! The player wins! Final score is Player: ${playerScore} and Computer: ${computerScore}`;
+    }
+    else if (computerScore == 5) {
+      resultDiv.textContent = `GAME OVER! The computer wins! Final score is Player: ${playerScore} and Computer: ${computerScore}`;
+    }
+    else if (playerScore < 5 || computerScore < 5){
             if (playerSelection == computerSelection && computerSelection) {
-                    return result = `Player played ${playerSelection} and Computer played ${computerSelection}. Draw! Player and Computer had the same selection`;
-                }
+              resultDiv.textContent = `Player played ${playerSelection} and Computer played ${computerSelection}. Draw! Player and Computer had the same selection`
+            }
             else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock")) {
-                    playerScore += 1;
-                    return result = `Player played ${playerSelection} and Computer played ${computerSelection}. Player wins!`;
-                }
+              playerScore += 1;
+              resultDiv.textContent = `Player played ${playerSelection} and Computer played ${computerSelection}. Player wins! The score is currently: Player - ${playerScore}, Computer - ${computerScore}`;
+            }
             else if ((computerSelection == "paper" && playerSelection == "rock") || (computerSelection == "scissors" && playerSelection == "paper") || (computerSelection == "rock" && playerSelection == "scissors")) {
-                    computerScore += 1;
-                    return result = `Player played ${playerSelection} and Computer played ${computerSelection}. Computer wins!`;
-                }
+              computerScore += 1;
+              resultDiv.textContent = `Player played ${playerSelection} and Computer played ${computerSelection}. Computer wins! The score is currently: Player - ${playerScore}, Computer - ${computerScore}`;
+            }
             else {
-                return result = "Error";
+              resultDiv.textContent = "Error";
             }
-        };
-
-        //This game function creates a loop that allows for 5 rounds to be played. It accepts the user input and computer input, then inserts them into the playRound() function and displays it.
-        let game = () => {
-            for (let i = 0; i < 5; i++) {
-                let playerSelection = window.prompt("Type Rock, Paper, or Scissors").toLowerCase();
-                let computerSelection = computerPlay();
-                console.log(playRound(playerSelection, computerSelection));
-            }
-        }
-
-        let playGame = () => {
-            game();
-
-            //Log the individual scores to the console, and determines who the final winner is.
-            console.log(`The computer's score is ${computerScore}`);
-            console.log(`The player's score is ${playerScore}`);
-            if (playerScore > computerScore) {
-                console.log("The player wins")
-                }
-            else if (computerScore > playerScore) {
-                console.log("The computer wins");
-                }
-            else if (computerScore == playerScore) {
-                console.log("The game ended in a draw");
-                }
-        }
-        
-        playGame();
+    }
+    
+  }
+    const paperBtn = document.querySelector('#paperBtn');
+    const rockBtn = document.querySelector('#rockBtn');
+    const scissorsBtn = document.querySelector('#scissorsBtn');
+    paperBtn.addEventListener("click", function() {
+        playRound("paper", computerPlay())
+        });
+    rockBtn.addEventListener("click", function() {
+        playRound("rock", computerPlay())
+        });
+    scissorsBtn.addEventListener("click", function() {
+        playRound("scissors", computerPlay())
+        });
+    container.appendChild(resultDiv);
     </script>
 </body>
 </html>

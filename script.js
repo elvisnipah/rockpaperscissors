@@ -27,9 +27,11 @@ function computerPlay() {
 let playRound = (playerSelection, computerSelection) => {
     if (playerScore == 5) {
         resultDiv.textContent = `GAME OVER! You win! Final score is You: ${playerScore} and Computer: ${computerScore}`;
+        resultDiv.className = "result-win";
     }
     else if (computerScore == 5) {
         resultDiv.textContent = `GAME OVER! The computer wins! Final score is You: ${playerScore} and Computer: ${computerScore}`;
+        resultDiv.className = "result-lose";
     }
     else if (playerScore < 5 && computerScore < 5){
         if (playerSelection == computerSelection && computerSelection) {

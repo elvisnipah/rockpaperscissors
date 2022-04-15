@@ -4,18 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
+  <h1>Rock, Paper, Scissors!</h1>
+  <div class="wrapper">
+    <div class="score">Computer 0 - 0 Player</div>
+    <div class="result">Choose a choice below to start the game.</div>
     <div id="container">
         <button id="paperBtn">Paper</button>
         <button id="rockBtn">Rock</button>
         <button id="scissorsBtn">Scissors</button>
     </div>
+  </div>
     
     <script>
     const container = document.querySelector('#container');
-    const resultDiv = document.createElement("div");
+    const resultDiv = document.querySelector(".result");
+    const scoreDiv = document.querySelector(".score");
 
     let playerScore = 0;
     let computerScore = 0;
@@ -38,22 +45,25 @@
     
     let playRound = (playerSelection, computerSelection) => {
       if (playerScore == 5) {
-      resultDiv.textContent = `GAME OVER! The player wins! Final score is Player: ${playerScore} and Computer: ${computerScore}`;
+        resultDiv.textContent = `GAME OVER! The player wins! Final score is Player: ${playerScore} and Computer: ${computerScore}`;
+      }
+      else if (computerScore == 5) {
+        resultDiv.textContent = `GAME OVER! The computer wins! Final score is Player: ${playerScore} and Computer: ${computerScore}`;
     }
-    else if (computerScore == 5) {
-      resultDiv.textContent = `GAME OVER! The computer wins! Final score is Player: ${playerScore} and Computer: ${computerScore}`;
-    }
-    else if (playerScore < 5 || computerScore < 5){
+      else if (playerScore < 5 && computerScore < 5){
             if (playerSelection == computerSelection && computerSelection) {
-              resultDiv.textContent = `Player played ${playerSelection} and Computer played ${computerSelection}. Draw! Player and Computer had the same selection`
+              resultDiv.textContent = `You played ${playerSelection} and Computer played ${computerSelection}. Draw! You and Computer had the same selection`;
+              scoreDiv.textContent = `Computer ${computerScore} - ${playerScore} Player`;
             }
             else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock")) {
               playerScore += 1;
-              resultDiv.textContent = `Player played ${playerSelection} and Computer played ${computerSelection}. Player wins! The score is currently: Player - ${playerScore}, Computer - ${computerScore}`;
+              resultDiv.textContent = `You played ${playerSelection} and Computer played ${computerSelection}. You win this round!`;
+              scoreDiv.textContent = `Computer ${computerScore} - ${playerScore} Player`;
             }
             else if ((computerSelection == "paper" && playerSelection == "rock") || (computerSelection == "scissors" && playerSelection == "paper") || (computerSelection == "rock" && playerSelection == "scissors")) {
               computerScore += 1;
-              resultDiv.textContent = `Player played ${playerSelection} and Computer played ${computerSelection}. Computer wins! The score is currently: Player - ${playerScore}, Computer - ${computerScore}`;
+              resultDiv.textContent = `You played ${playerSelection} and Computer played ${computerSelection}. Computer wins this round!`;
+              scoreDiv.textContent = `Computer ${computerScore} - ${playerScore} Player`;
             }
             else {
               resultDiv.textContent = "Error";
@@ -73,7 +83,6 @@
     scissorsBtn.addEventListener("click", function() {
         playRound("scissors", computerPlay())
         });
-    container.appendChild(resultDiv);
     </script>
 </body>
 </html>

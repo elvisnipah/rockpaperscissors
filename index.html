@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
     <title>Rock, Paper, Scissors</title>
 </head>
 <body>
@@ -18,71 +19,5 @@
         <button id="scissorsBtn">Scissors</button>
     </div>
   </div>
-    
-    <script>
-    const container = document.querySelector('#container');
-    const resultDiv = document.querySelector(".result");
-    const scoreDiv = document.querySelector(".score");
-
-    let playerScore = 0;
-    let computerScore = 0;
-    function computerPlay() {
-            let selection = Math.floor(Math.random() * 3) + 1;
-            let compChoice = "";
-            if(selection == 1){
-                return compChoice = "scissors";
-                }
-            else if(selection == 2) {
-                return compChoice = "rock";
-                }
-            else if(selection == 3) {
-                return compChoice = "paper";
-                }
-            else {
-                return undefined;
-                }
-        }
-    
-    let playRound = (playerSelection, computerSelection) => {
-      if (playerScore == 5) {
-        resultDiv.textContent = `GAME OVER! You win! Final score is You: ${playerScore} and Computer: ${computerScore}`;
-      }
-      else if (computerScore == 5) {
-        resultDiv.textContent = `GAME OVER! The computer wins! Final score is You: ${playerScore} and Computer: ${computerScore}`;
-    }
-      else if (playerScore < 5 && computerScore < 5){
-            if (playerSelection == computerSelection && computerSelection) {
-              resultDiv.textContent = `You played ${playerSelection} and Computer played ${computerSelection}. Draw! You and Computer had the same selection`;
-              scoreDiv.textContent = `Computer ${computerScore} - ${playerScore} Player`;
-            }
-            else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock")) {
-              playerScore += 1;
-              resultDiv.textContent = `You played ${playerSelection} and Computer played ${computerSelection}. You win this round!`;
-              scoreDiv.textContent = `Computer ${computerScore} - ${playerScore} Player`;
-            }
-            else if ((computerSelection == "paper" && playerSelection == "rock") || (computerSelection == "scissors" && playerSelection == "paper") || (computerSelection == "rock" && playerSelection == "scissors")) {
-              computerScore += 1;
-              resultDiv.textContent = `You played ${playerSelection} and Computer played ${computerSelection}. Computer wins this round!`;
-              scoreDiv.textContent = `Computer ${computerScore} - ${playerScore} Player`;
-            }
-            else {
-              resultDiv.textContent = "Error";
-            }
-    }
-    
-  }
-    const paperBtn = document.querySelector('#paperBtn');
-    const rockBtn = document.querySelector('#rockBtn');
-    const scissorsBtn = document.querySelector('#scissorsBtn');
-    paperBtn.addEventListener("click", function() {
-        playRound("paper", computerPlay())
-        });
-    rockBtn.addEventListener("click", function() {
-        playRound("rock", computerPlay())
-        });
-    scissorsBtn.addEventListener("click", function() {
-        playRound("scissors", computerPlay())
-        });
-    </script>
 </body>
 </html>

@@ -35,7 +35,7 @@ let playRound = (playerSelection, computerSelection) => {
     }
     else if (playerScore < 5 && computerScore < 5){
         if (playerSelection == computerSelection && computerSelection) {
-            resultDiv.textContent = `You played ${playerSelection} and Computer played ${computerSelection}. Draw! You and Computer had the same selection`;
+            resultDiv.textContent = `You played ${playerSelection} and Computer also played ${computerSelection}. Draw!`;
             scoreDiv.textContent = `Computer ${computerScore} - ${playerScore} Player`;
         }
         else if ((playerSelection == "rock" && computerSelection == "scissors") || (playerSelection == "scissors" && computerSelection == "paper") || (playerSelection == "paper" && computerSelection == "rock")) {

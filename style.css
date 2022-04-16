@@ -27,7 +27,7 @@ body {
 }
 
 .heading {
-    font: 5em 'robus', sans-serif;
+    font: 4.5em 'robus', sans-serif;
     text-align: center;
 }
 
@@ -35,7 +35,7 @@ body {
     border: 1px solid black;
     border-radius: 5px;
     background-color: rgb(210, 210, 210);
-    height: 60vh;
+    height: 70vh;
     width: 60vw;
     display: flex;
     flex-direction: column;
@@ -54,7 +54,7 @@ body {
 }
 
 .result {
-    font: 2em "kbanavoxlost", sans-serif;
+    font: 1.8em "kbanavoxlost", sans-serif;
     font-weight: bold;
     background-color: white;
     text-align: center;
